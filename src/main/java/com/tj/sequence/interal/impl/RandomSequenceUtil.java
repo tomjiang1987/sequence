@@ -37,15 +37,6 @@ public class RandomSequenceUtil {
             num[1] = temp;
         }
 
-        // for (int i = 0; i < n + 10; i++) {
-        // int rindex = random.nextInt(n);// 产生0~n-1的随机数
-        // int mindex = random.nextInt(n);
-        // int temp = num[mindex];
-        // num[mindex] = num[rindex];
-        // num[rindex] = temp;
-        // }
-        // return num;
-
         int[] result = randomIntSequence(num);
 
         return result;

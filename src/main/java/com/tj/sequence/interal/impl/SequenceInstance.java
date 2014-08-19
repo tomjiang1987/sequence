@@ -51,10 +51,6 @@ public class SequenceInstance {
 			}
 		}
 
-		if (value < 0) {
-			throw new SequenceException("Sequence value overflow, value = " + value);
-		}
-
 		return value;
 	}
 
