@@ -36,7 +36,7 @@ public class DBlockTest {
 			@Override
 			public void run() {
 				for(;;){
-					if(num.get() > 100000) break;
+					if(num.get() > 1000) break;
 					
 		        	String name = "seq0";
 		        	Connection conn = null;
@@ -166,7 +166,7 @@ public class DBlockTest {
         
         List<Thread> ts = new ArrayList<Thread>();
         Long start = System.currentTimeMillis();
-        for(int j = 0;j < 100;j++){
+        for(int j = 0;j < 10;j++){
         	Thread thread = new Thread(job,"thread"+j);
         	ts.add(thread);
         	thread.start();

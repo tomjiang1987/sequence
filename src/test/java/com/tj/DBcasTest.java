@@ -35,7 +35,7 @@ public class DBcasTest {
 			@Override
 			public void run() {
 				for(;;){
-					if(num.get() > 100000) break;
+					//if(num.get() > 100000) break;
 						
 		        	String name = "seq0";
 		        	Connection conn = null;
@@ -52,17 +52,26 @@ public class DBcasTest {
 							continue;
 						}
 						
-						num.getAndIncrement();
+						
+						Long value = num.get();
+				        boolean flag = false;
+				        while (value < 1000 && !flag) {
+				            flag = num.compareAndSet(value, value + 1);
+				            value = num.get();
+				        }
+				        if(!flag) break;
 						
 						if(count.get(oldValue) == null){
 							count.put(oldValue, new AtomicLong(1));
 						}else{
 							System.out.println(Thread.currentThread().getName() + ":confilict key " + oldValue + ":count: " +count.get(oldValue).getAndIncrement());
 						}
+						
+						
 			          
 					} catch (Exception e) {
 						exceptions.getAndIncrement();
-						//e.printStackTrace();
+						e.printStackTrace();
 						
 					}finally{
 						closeConnection(conn);
@@ -164,7 +173,7 @@ public class DBcasTest {
         
         List<Thread> ts = new ArrayList<Thread>();
         Long start = System.currentTimeMillis();
-        for(int j = 0;j < 100;j++){
+        for(int j = 0;j < 10;j++){
         	Thread thread = new Thread(job,"thread"+j);
         	ts.add(thread);
         	thread.start();
