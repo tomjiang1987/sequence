@@ -27,7 +27,11 @@
 	
 	<dependencyManagement>
 		<dependencies>
-		
+			<dependency>
+				<groupId>com.tj</groupId>
+				<artifactId>sequence-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
