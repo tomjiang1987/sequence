@@ -22,7 +22,7 @@
 		<file_encoding>UTF-8</file_encoding>
 		<!-- Log libs -->
 		<log4j_version>1.2.16</log4j_version>
-		<spring_version>2.5.6.SEC03</spring_version>
+		<spring_version>3.2.10.RELEASE</spring_version>
 		<curator_version>1.1.16</curator_version>
 	</properties>
 	
