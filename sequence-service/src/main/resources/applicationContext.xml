@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="dataSource0" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url" value="jdbc:mysql://localhost:3306/s0" />
+		<property name="username"><value>root</value></property>
+		<property name="password" value="admin" />
+		<property name="filters"><value>stat</value></property>
+
+		<property name="maxActive"><value>20</value></property>
+		<property name="initialSize"><value>3</value></property>
+		<property name="maxWait"><value>500</value></property>
+		<property name="minIdle"><value>3</value></property>
+
+		<property name="timeBetweenEvictionRunsMillis"><value>60000</value></property>
+		<property name="minEvictableIdleTimeMillis"><value>300000</value></property>
+
+		<property name="validationQuery"><value>SELECT 'x'</value></property>
+		<property name="testWhileIdle"><value>true</value></property>
+		<property name="testOnBorrow"><value>false</value></property>
+		<property name="testOnReturn"><value>false</value></property>
+		<property name="poolPreparedStatements"><value>true</value></property>
+     	<property name="maxOpenPreparedStatements"><value>20</value></property>
+	</bean>
+
+	<bean id="dataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url" value="jdbc:mysql://localhost:3306/s1" />
+		<property name="username"><value>root</value></property>
+		<property name="password" value="admin" />
+		<property name="filters"><value>stat</value></property>
+
+		<property name="maxActive"><value>20</value></property>
+		<property name="initialSize"><value>3</value></property>
+		<property name="maxWait"><value>500</value></property>
+		<property name="minIdle"><value>3</value></property>
+
+		<property name="timeBetweenEvictionRunsMillis"><value>60000</value></property>
+		<property name="minEvictableIdleTimeMillis"><value>300000</value></property>
+
+		<property name="validationQuery"><value>SELECT 'x'</value></property>
+		<property name="testWhileIdle"><value>true</value></property>
+		<property name="testOnBorrow"><value>false</value></property>
+		<property name="testOnReturn"><value>false</value></property>
+		<property name="poolPreparedStatements"><value>true</value></property>
+     	<property name="maxOpenPreparedStatements"><value>20</value></property>
+	</bean>
+	
+	<bean id="sequenceDao" class="com.tj.sequence.interal.impl.DefaultSequenceDao">
+	    <property name="dataSources">
+	        <list value-type="javax.sql.DataSource">
+	            <ref bean="dataSource0"/>
+	            <ref bean="dataSource1"/>
+	        </list>
+	    </property>
+	</bean>
+	
+	<bean id="sequence" class="com.tj.sequence.interal.impl.DefaultSequence">
+      <property name="sequenceDao" ref="sequenceDao"/>
+    </bean>
+	
+	<import resource="dubbo-service.xml"></import>
+</beans>

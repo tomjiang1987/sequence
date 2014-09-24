@@ -44,6 +44,14 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring_version}</version>
 		</dependency>
+		<dependency>  
+	       <groupId>com.alibaba</groupId>  
+	       <artifactId>dubbo</artifactId>  
+	    </dependency>
+	    <dependency>
+			<groupId>com.netflix.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+		</dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

@@ -23,6 +23,7 @@
 		<!-- Log libs -->
 		<log4j_version>1.2.16</log4j_version>
 		<spring_version>2.5.6.SEC03</spring_version>
+		<curator_version>1.1.16</curator_version>
 	</properties>
 	
 	<dependencyManagement>
@@ -65,7 +66,16 @@
 	      <version>3.8.1</version>
 	      <scope>test</scope>
 	    </dependency>
-	    
+	    <dependency>  
+         <groupId>com.alibaba</groupId>  
+         <artifactId>dubbo</artifactId>  
+         <version>2.5.4-SNAPSHOT</version>  
+      </dependency>
+      <dependency>
+				<groupId>com.netflix.curator</groupId>
+				<artifactId>curator-framework</artifactId>
+				<version>${curator_version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
