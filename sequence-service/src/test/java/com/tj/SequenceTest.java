@@ -21,13 +21,18 @@ public class SequenceTest {
         String name = "seq0";
         List<Long> seqList = new ArrayList<Long>();
         for(int i = 0 ;i< 1000 ;i++){
-        	seqList.add(sequence.nextValue(name));
+        	Long next = sequence.nextValue(name);
+        	System.out.println(next);
+        	seqList.add(next);
         }
         
+        System.out.println("after sort...");
         Collections.sort(seqList);
-        
         for(Long i : seqList){
         	System.out.println(i);
         }
+        
+        System.out.println("spring closing");
+        context.close();
 	}
 }
