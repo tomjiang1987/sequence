@@ -18,7 +18,7 @@ import com.tj.sequence.interal.SequenceDao;
 import com.tj.sequence.interal.SequenceRange;
 
 public class DefaultSequenceDao implements SequenceDao {
-	private int retryTimes = 2;
+	private int retryTimes = 3;
 	private List<DataSource> dataSources;
 	private int dsCount; //data source's count
 	private Map<Integer, AtomicInteger> dsFailCount;//datasource fail time count
@@ -49,13 +49,13 @@ public class DefaultSequenceDao implements SequenceDao {
                     continue;
                 }
 				
-				Long newValue = oldValue + (seqDO.getSize() * seqDO.getStart());
+				Long newValue = oldValue + (seqDO.getSize() * seqDO.getStep());
 				Long startValue = oldValue;
 				try {
 					if(newValue > seqDO.getMax()){
 						if(seqDO.getCycle()){
-							startValue = seqDO.getMin();
-							newValue = seqDO.getMin() + (seqDO.getSize() * seqDO.getStart());
+							startValue = seqDO.getStart();
+							newValue = startValue + (seqDO.getSize() * seqDO.getStep());
 						}else{
 							//logger.error(name + " sequence is overflow");
 							continue;

@@ -9,7 +9,7 @@ package com.tj.sequence;
 public interface Sequence {
 
 	/**
-	 * get next sequence value
+	 * get next value of sequence(@param name).
 	 * 
 	 * @return next sequence value
 	 * @throws SequenceException

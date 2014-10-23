@@ -21,7 +21,7 @@
 		<property name="testWhileIdle"><value>true</value></property>
 		<property name="testOnBorrow"><value>false</value></property>
 		<property name="testOnReturn"><value>false</value></property>
-		<property name="poolPreparedStatements"><value>true</value></property>
+		<property name="poolPreparedStatements"><value>false</value></property>
      	<property name="maxOpenPreparedStatements"><value>20</value></property>
 	</bean>
 
@@ -43,7 +43,7 @@
 		<property name="testWhileIdle"><value>true</value></property>
 		<property name="testOnBorrow"><value>false</value></property>
 		<property name="testOnReturn"><value>false</value></property>
-		<property name="poolPreparedStatements"><value>true</value></property>
+		<property name="poolPreparedStatements"><value>false</value></property>
      	<property name="maxOpenPreparedStatements"><value>20</value></property>
 	</bean>
 	
